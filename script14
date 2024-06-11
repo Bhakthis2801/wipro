@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# List of servers to deploy to
+servers=("server1.example.com" "server2.example.com" "server3.example.com")
+
+# Pull latest code from repository
+git pull origin master
+
+# Build the application
+./build.sh
+
+# Deploy to each server in a rolling fashion
+for server in "${servers[@]}"
+do
+    echo "Deploying to $server..."
+    ssh user@$server 'cd /path/to/application && git pull origin master && ./deploy.sh'
+done
+

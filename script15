@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Clean temporary files
+sudo rm -rf /tmp/*
+
+# Clear cache
+sudo apt-get clean
+
+# Remove old log files
+sudo find /var/log -type f -name '*.log' -mtime +7 -exec rm {} \;
+

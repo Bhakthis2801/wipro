@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for file in $(find . -type f); do
+    echo "$file: $(stat -c%s "$file") bytes"
+done
+

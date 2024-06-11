@@ -1,0 +1,9 @@
+#!/bin/bash
+
+urls_file="urls.txt"
+
+while IFS= read -r url; do
+  filename=$(basename "$url")
+  wget "$url" -O "$filename"
+done < "$urls_file"
+

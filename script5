@@ -1,0 +1,33 @@
+#!/bin/bash
+
+while true; do
+    echo "Menu:"
+    echo "1. Add"
+    echo "2. Delete"
+    echo "3. View"
+    echo "4. Exit"
+    read -p "Enter your choice: " choice
+
+    case $choice in
+        1)
+            echo "Add option selected."
+            # Add your code here to add something
+            ;;
+        2)
+            echo "Delete option selected."
+            # Add your code here to delete something
+            ;;
+        3)
+            echo "View option selected."
+            # Add your code here to view something
+            ;;
+        4)
+            echo "Exiting the menu."
+            break
+            ;;
+        *)
+            echo "Invalid choice. Please try again."
+            ;;
+    esac
+done
+

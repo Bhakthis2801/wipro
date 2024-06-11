@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Function to generate random passwords
+generate_password() {
+    local length=$1
+    local use_special_chars=$2
+    local use_numbers=$3
+    local use_uppercase=$4
+    local charset=''
+
+    if [ "$use_special_chars" = true ]; then
+        charset+='!@#$%^&*()_+-={}[]|;:,.<>?'
+    fi
+
+    if [ "$use_numbers" = true ]; then
+        charset+='0123456789'
+    fi
+
+    if [ "$use_uppercase" = true ]; then
+        charset+='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    fi
+
+    charset+='abcdefghijklmnopqrstuvwxyz'
+
+    password=''
+    for i in $(seq 1 $length); do
+        random_char=$(echo -n "$charset" | shuf -n 1)
+        password+="$random_char"
+    done
+
+    echo "$password"
+}
+
+# Main script
+echo "Welcome to Password Generator!"
+read -p "Enter length of password: " length
+
+read -p "Include special characters? (y/n): " special_chars
+if [ "$special_chars" = "y" ]; then
+    use_special=true
+else
+    use_special=false
+fi
+
+read -p "Include numbers? (y/n): " numbers
+if [ "$numbers" = "y" ]; then
+    use_numbers=true
+else
+    use_numbers=false
+fi
+
+read -p "Include uppercase letters? (y/n): " uppercase
+if [ "$uppercase" = "y" ]; then
+    use_uppercase=true
+else
+    use_uppercase=false
+fi
+
+password=$(generate_password $length $use_special $use_numbers $use_uppercase)
+echo "Generated Password: $password"
+

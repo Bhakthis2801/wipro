@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Function to create backup
+create_backup() {
+    local source_dir="$1"
+    local backup_location="$2"
+
+    # Check if source directory exists
+    if [ ! -d "$source_dir" ]; then
+        echo "Error: Source directory '$source_dir' does not exist."
+        exit 1
+    fi
+
+    # Check if backup location exists, if not, create it
+    if [ ! -d "$backup_location" ]; then
+        mkdir -p "$backup_location"
+        echo "Created backup location: $backup_location"
+    fi
+
+    # Create backup filename with timestamp
+    backup_filename="backup_$(date +'%Y-%m-%d_%H-%M-%S').tar.gz"
+
+    # Compress files and directories in the source directory
+    tar -czf "$backup_location/$backup_filename" "$source_dir"/*
+
+    echo "Backup created: $backup_location/$backup_filename"
+}
+
+# Main script
+echo "Welcome to Directory Backup Script!"
+
+# Input source directory
+read -p "Enter source directory path: " source_directory
+
+# Input backup location
+read -p "Enter backup location path: " backup_location
+
+# Create backup
+create_backup "$source_directory" "$backup_location"
+

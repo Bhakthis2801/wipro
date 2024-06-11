@@ -1,0 +1,14 @@
+#!/bin/bash
+
+process_name="my_process"
+
+while true; do
+  if pgrep -f "$process_name" > /dev/null; then
+    echo "Process $process_name is running."
+  else
+    echo "Process $process_name has stopped running."
+    exit 0
+  fi
+  sleep 1
+done
+

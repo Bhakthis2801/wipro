@@ -1,0 +1,25 @@
+#!/bin/bash
+
+while true; do
+    read -s -p "Enter a password: " password
+    echo
+    if [[ $password =~ ^[a-zA-Z0-9_.@#$%^&*()_+-=<>?,/{}[]|~`\\-]+$ && ${#password} -ge 8 ]]; then
+        echo "Password is valid.#!/bin/bash
+
+while true; do
+  read -p "Enter a password: " password
+  
+  if [[ $password =~ ^[a-zA-Z0-9_]{8,}$ ]]; then
+    echo "Password is valid."
+    break
+  else
+    echo "Password must be at least 8 characters with a mix of letters, numbers, and special characters."
+  fi
+done
+"
+        break
+    else
+        echo "Password is not valid. Please try again."
+    fi
+done
+

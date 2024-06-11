@@ -1,0 +1,17 @@
+#!/bin/bash
+
+backup_dir="backup_dir"
+source_dir="source_dir"
+
+while true; do
+  if [ -n "$(find "$source_dir" -type f -print)" ]; then
+    for file in "$source_dir"/*; do
+      if [ -f "$file" ]; then
+        filename=$(basename "$file")
+        cp "$file" "$backup_dir/$filename"
+      fi
+    done
+  fi
+  sleep 1
+done
+
