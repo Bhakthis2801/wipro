@@ -1,0 +1,16 @@
+create table COMPDTLS(
+CompName varchar Primary Key,
+RegDate Date NOT NULL,
+StackPrice float,
+Country varchar
+);
+
+
+
+
+SELECT MAX(Stock_Price) AS Max_Stock_Price FROM company;
+SELECT AVG(Stock_Price) AS Avg_Stock_Price FROM company;
+SELECT DISTINCT Country FROM company;
+SELECT COUNT(DISTINCT Country) AS Total_No_of_Countries FROM company;
+SELECT Cname, Country FROM company;
+
